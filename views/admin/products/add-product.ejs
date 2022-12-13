@@ -1,0 +1,109 @@
+<%- include('../includes/header.ejs') %> 
+    <input type="hidden" id="sweetAlert" value="<%= sweetAlert %>">
+    <input type="hidden" id="errorMessage" value="<%= errorMessage %>">
+    <section class="container">
+        <div class="row">
+            <div class="col-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body rounded">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h4 class="mb-0"><%= !isEditing ? "Add product":"Edit Product"%></h4>
+                            <a href="/admin/product-lists" class="">
+                                <i class="fa-solid fa-list mr-2"></i>
+                            </a>
+                        </div>
+                        <hr>
+                        <form action="/admin/<%= !isEditing ? 'add-product' : 'edit-product'%>" method="post" enctype="multipart/form-data">
+                            <% if(isEditing) {%>
+                                <input type="hidden" value="<%= product._id %>" name="id">
+                            <% } %>  
+                            <div class="form-group">
+                                <label for="">Enter Product Name</label>
+                                <input 
+                                    type="text"
+                                    class="form-control <%= validationsErrors.find((v)=>v.param == "name") && 'validations'%>"
+                                    name="name"
+                                    value="<%= isEditing ? product.name :'' || oldInput.name && oldInput.name %>"
+                                >
+                                <% if(hasError && error.param == "name"){ %>
+                                    <div class="mt-1">
+                                        <span class="text-danger"><%= error.msg %></span>
+                                    </div>
+                                <% } %>  
+                            </div>
+                            <div class="form-group">
+                                <label for="">Select Category</label>
+                                <select name="category_id" id="" class="form-control select-category  <%= validationsErrors.find((v)=>v.param == "category_id") && 'validations' %>">
+                                    <option value="">Select Category</option>
+                                    
+                                    <% for(category of categories){ %>
+                                        <option value="<%= category._id %>" <% if(product.categoryId && category._id.toString() == product.categoryId.toString()){%>selected<% }else{%>  <% } %> ><%= category.name %> </option>
+                                    <% } %>  
+                                </select>
+                                <% if(hasError && error.param == "category_id"){ %>
+                                    <div class="my-1">
+                                        <span class="text-danger"><%= error.msg %></span>
+                                    </div>
+                                <% } %> 
+                            </div>
+                            <div class="form-group">
+                                <label for="">Enter Price</label>
+                                <input 
+                                    type="number" 
+                                    class="form-control <%= validationsErrors.find((v)=>v.param == "price") && 'validations' %>" 
+                                    name="price"
+                                    value="<%= isEditing ? product.price : '' || oldInput.price && oldInput.price %>"
+                                >
+                                <% if(hasError && error.param == "price"){ %>
+                                    <div class="mt-1">
+                                        <span class="text-danger"><%= error.msg %></span>
+                                    </div>
+                                <% } %> 
+                            </div>
+                            <div class="form-group">
+                                <label for="">Enter Number Instocks</label>
+                                <input 
+                                    type="number" 
+                                    class="form-control <%= validationsErrors.find((v)=>v.param == "numberInstock") && 'validations' %>" 
+                                    name="numberInstock"
+                                    value="<%= isEditing ? product.numberInstock : '' || oldInput.numberInstock && oldInput.numberInstock %>"
+                                >
+                                <% if(hasError && error.param == "numberInstock"){ %>
+                                    <div class="my-1">
+                                        <span class="text-danger"><%= error.msg %></span>
+                                    </div>
+                                <% } %> 
+                            </div>
+                            <div class="form-group">
+                                <label for="">Select Image</label>
+                                <input type="file" name="image" id="" class="form-control">
+                                <% if(hasError && error.param == "image"){ %>
+                                    <div class="my-1">
+                                        <span class="text-danger"><%= error.msg %></span>
+                                    </div>
+                                <% } %> 
+                            <% if(isEditing){ %>
+                                <img src="/<%= product.image %>" alt="<%= product.name %>" style="width: 100px;">
+                            <% } %>  
+                            <div class="form-group">
+                                <label for="">Description</label>
+                                <textarea 
+                                    name="description" 
+                                    id="" 
+                                    class="form-control <%= validationsErrors.find((v)=>v.param == "name") && 'validations' %>"
+                                ><%= isEditing ? product.description : ''  || oldInput.description && oldInput.description%></textarea>
+                                <% if(hasError && error.param == "description"){ %>
+                                    <div class="mt-1">
+                                        <span class="text-danger"><%= error.msg %></span>
+                                    </div>
+                                <% } %> 
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="<%= isEditing ? 'Update Product' : 'Add Product' %> ">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<%- include('../includes/footer.ejs') %> 
+

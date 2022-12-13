@@ -1,0 +1,85 @@
+<%- include('../includes/header.ejs') %> 
+    <section class="container">
+        <input type="hidden" id="sweetAlert" value="<%= sweetAlert %>">
+        <input type="hidden" id="errorMessage" value="<%= errorMessage %>">
+      
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body rounded">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h4 class="mb-0">Add Admin User</h4>
+                            <a href="/admin/admin-lists" class="">
+                                <i class="fa-solid fa-list mr-2"></i>
+                            </a>
+                        </div>
+                        <hr>
+                        <form action="/admin/add-admin" method="post" enctype="multipart/form-data">
+                            <div class="from-group mb-2">
+                                <label for="">Name:</label>
+                                <input 
+                                    type="text" 
+                                    name="name"
+                                    class="form-control <%= validationsErrors.find((v)=>v.param == "name") && "validations"  %>" 
+                                    value="<%= oldInput?.name && oldInput?.name %> "
+                                >
+                                <% if(hasError && error.param == "name"){ %>
+                                    <div class="mt-1">
+                                        <span class="text-danger"><%= error.msg %></span>
+                                    </div>
+                                <% } %> 
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="">Email:</label>
+                                <input 
+                                    type="email" 
+                                    name="email"
+                                    class="form-control <%= validationsErrors.find((v)=>v.param == "email") && 'validations' %>"
+                                    value="<%= oldInput?.email && oldInput?.email %> "
+                                >
+                                <% if(hasError && error.param == "email"){ %>
+                                    <div class="mt-1">
+                                        <span class="text-danger"><%= error.msg %></span>
+                                    </div>
+                                <% } %> 
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="">Phone:</label>
+                                <input 
+                                    type="number" 
+                                    name="phone"
+                                    class="form-control <%= validationsErrors.find((v)=>v.param == "phone") && 'validations' %>"
+                                    value="<%= oldInput?.phone && oldInput?.phone %> "
+                                >
+                                <% if(hasError && error.param == "phone"){ %>
+                                    <div class="mt-1">
+                                        <span class="text-danger"><%= error.msg %></span>
+                                    </div>
+                                <% } %> 
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="">Profile Picture</label>
+                                <input type="file" class="form-control" name="userimage">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="">Password:</label>
+                                <input 
+                                    type="password" 
+                                    name="password"
+                                    class="form-control <%= validationsErrors.find((v)=>v.param == "password") && 'validations' %>"
+                                    value="<%= oldInput?.password && oldInput?.password %>" 
+                                >
+                                <% if(hasError && error.param == "password"){ %>
+                                    <div class="mt-1">
+                                        <span class="text-danger"><%= error.msg %></span>
+                                    </div>
+                                <% } %> 
+                            </div>
+                            <input type="submit" class="btn btn-primary" value="Add Admin">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<%- include('../includes/footer.ejs') %> 

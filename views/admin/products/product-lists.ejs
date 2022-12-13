@@ -1,0 +1,44 @@
+<%- include('../includes/header.ejs') %>
+    <input type="hidden" id="sweetAlert" value="<%= sweetAlert %>">
+    <input type="hidden" id="errorMessage" value="<%= errorMessage %>">
+<section class="container product-lists">
+       <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+           <% for(product of products){ %>
+                <tr>
+                    <td><%= product.name %> </td>
+                    <td><img src="/<%= product.image %> " alt=""></td>
+                    <td><%= product.price %> (MMK) </td>
+                    <td>
+                        <form action="/admin/product-delete" method="post" style="display: inline-block;">
+                            <input type="hidden" value="<%= product._id %>" name="product_id">
+                            <button class="btn btn-danger btn-sm mr-2" type="submit">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </form>
+                        <a href="/admin/edit-product/<%= product._id %>" class="btn btn-warning btn-sm">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                    </td>
+                </tr>
+           <% } %> 
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+    </table>
+</section>
+<%- include('../includes/footer.ejs') %>  

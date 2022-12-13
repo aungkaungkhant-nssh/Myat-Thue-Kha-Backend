@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %> </title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-5">
+                <div class="card shadow profile">
+                    <div class="card-body text-center">
+                        <a href="/admin/admin-lists">
+                            <i class="fa-solid fa-circle-left back text-primary"></i>
+                        </a>
+                        <div class="profile-image">
+                            <div style="border-radius:50%;width:150px;">
+                                <img src="/<%= admin.image %>" alt="<%= admin.name %>" style="border-radius:50%;width:150px;" class="text-center">
+                                <form action="/admin/change-profile" class="change-profile-icon update-profile"  enctype="multipart/form-data" method="post">
+                                    <input type="hidden" value="<%= admin._id %>" name="id">
+                                    <label for="change-input" style="cursor: pointer;">
+                                        <i class="fa-solid fa-camera text-primary"></i>
+                                    </label>
+                                    <input type="file" id="change-input" name="userimage">
+                                </form>
+                            </div>
+                           
+                        </div>
+                        <div class="mt-4">
+                            <form action="/admin/adminuser-update" method="post">
+                                <input type="hidden" value="<%= admin._id %>" name="id">
+                                <div class="form-group">
+                                    <input type="text" value="<%= admin.name %>" class="form-control" name="name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" value="<%= admin.email %>" class="form-control" name="email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" value="<%= admin.phone %>" class="form-control" name="phone">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" value="  <%= admin.role === 1 ? "Owner" : admin.role === 2 ? "Assistant" : "Staff"%>" class="form-control">
+                                </div>
+                                <div>
+                                    <input type="submit" class="Update Profile btn btn-primary" value="Update Pofile">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/jquery.js"></script>
+   <script src="/js/admin.js"></script>
+   
+</body>
+</html>

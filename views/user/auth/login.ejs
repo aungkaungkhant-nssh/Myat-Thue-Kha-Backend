@@ -1,0 +1,38 @@
+ <!-- Modal -->
+ <div class="modal fade" id="userlogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">MyatThueKha</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form  method="post">
+                <div class="form-group">
+                    <input type="number" placeholder="Phone Number" class="form-control"  id="phone" >
+                     <div class="login-invalid-msg"></div>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control" id="password">
+                </div>
+                <button  class="btn btn-primary btn-block login-btn">
+                  <div id="loading">
+                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                     Loading...
+                  </div>
+                  <p class="mb-0 login-text">Login</p>
+                </button>
+                <p class="text-primary text-center my-3">Forgot Password?</p>
+                <hr>
+                <div class="text-center">
+                    <a href="" class="btn btn-secondary">Create New Account</a>
+                </div>
+            </form>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>

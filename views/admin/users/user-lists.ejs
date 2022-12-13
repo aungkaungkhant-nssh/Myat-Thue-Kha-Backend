@@ -1,0 +1,50 @@
+<%- include('../includes/header.ejs') %>
+<section class="container admin-lists">
+    <input type="hidden" id="sweetAlert" value="<%= sweetAlert %>">
+    <input type="hidden" id="errorMessage" value="<%= errorMessage %>">
+     <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Profile</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+          
+           <% for(user of users){ %>
+                <tr>
+                    <td><%= user.name %> </td>
+                    <td><img src="/<%= user.image %> " alt=""></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.phone %> </td>
+
+                    <td>
+                        <% if(admin.role == 1 || admin.role==2){ %>
+                            <form action="/admin/user-delete" method="post" style="display: inline-block;">
+                                <input type="hidden" value="<%= user._id %>" name="user_id">
+                                <button class="btn btn-danger btn-sm mr-2" type="submit">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                        <% }else{ %>
+                            -
+                        <% } %>   
+                    </td>
+                </tr>
+           <% } %> 
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Profile</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+    </table>
+</section>
+<%- include('../includes/footer.ejs') %>

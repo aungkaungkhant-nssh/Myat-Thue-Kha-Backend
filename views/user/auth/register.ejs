@@ -1,0 +1,81 @@
+ <!-- Modal -->
+<div class="modal fade" id="userregister" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">MyatThueKha</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form  method="post" >
+                <div class="form-group">
+                    <input 
+                        type="text" 
+                        placeholder="Name" 
+                        class="form-control" 
+                        name="name"
+                        id="name"
+                        >
+                    <div class="register-invalid-msg"></div>
+                </div>
+                <div class="form-group">
+                    <input 
+                        type="email" 
+                        placeholder="Email"
+                        class="form-control"
+                        name="email"
+                        id="email"
+                        >
+                </div>
+                <div class="form-group">
+                    <input type="file" placeholder="Select Profile picture" name="userimage" id="userimage">
+                    <span>optional</span>
+                </div>
+                <div class="form-group">
+                    <input 
+                        type="number" 
+                        placeholder="Phone Number" 
+                        class="form-control" 
+                        name="phone"
+                        id="rphone"
+                        >
+                </div>
+                <div class="form-group">
+                    <input 
+                        type="password" 
+                        placeholder="Password" 
+                        class="form-control"
+                        name="password"
+                        id="rpassword"
+                        >
+                </div>
+                <div class="form-group">
+                    <input 
+                        type="password"
+                        placeholder="Confrim Password" 
+                        class="form-control"
+                        name="confirmPassword"
+                   
+                        id="confirmPassword"
+                        >
+                </div>
+                <button  class="btn btn-primary btn-block register-btn">
+                    Sign Up
+                </button>
+                <hr>
+                <div class="text-center">
+                    <span>
+                        Do you have an account?
+                        <a href="#"  data-toggle="modal" data-target="#userlogin" class="login-btn">Login</a>
+                    </span>
+                    
+                </div>
+                
+            </form>
+        </div>
+        
+        </div>
+    </div>
+</div>

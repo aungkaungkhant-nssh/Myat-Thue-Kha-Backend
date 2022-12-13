@@ -1,0 +1,38 @@
+<%- include('../includes/header.ejs') %>
+    <section class="container admin-lists">
+        <input type="hidden" id="sweetAlert" value="<%= sweetAlert %>">
+        <input type="hidden" id="errorMessage" value="<%= errorMessage %>">
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+               <% for(category of categories){ %>
+                    <tr>
+                        <td><%= category.name %> </td>
+                        <td>
+                            <form action="/admin/category-delete" method="post" style="display: inline-block;">
+                                <input type="hidden" value="<%= category._id %>" name="category_id">
+                                <button class="btn btn-danger btn-sm mr-2" type="submit">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                            <a href="/admin/edit-category/<%= category._id %>" class="btn btn-warning btn-sm">
+                                <i class="fa-solid fa-pen"></i>
+                            </a>
+                        </td>
+                    </tr>
+               <% } %> 
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+            </tfoot>
+        </table>
+    </section>
+<%- include('../includes/footer.ejs') %>  

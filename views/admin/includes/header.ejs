@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+  
+    <link rel="stylesheet" href="/mine/app.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+    <section class="main container-fluid">
+        <div class="row">
+            <!-- start sidebar -->
+            <div class="col-lg-3 col-xl-2 sidebar p-3">
+                <div class="d-flex justify-content-between " style="background-color: #f3f3f3;">
+                    <div class="d-flex  align-items-center p-2 rounded" >
+                        <span style="cursor: pointer;" class="text-white bg-primary rounded p-2 d-flex align-items-center justify-content-center mr-3"><i class="fa-solid fa-syringe"></i></span>
+                        <span class="font-weight-bolder text-dark">MyatThueKha</span>
+                    </div>
+                    <button class="btn bn-primary d-lg-none d-block hide-sidebar">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                 
+                <div class="nav-menu mt-4">
+                    <ul>
+                        <li class="menu-item d-flex">
+                            <a href="/admin/dashboard" class="<%= currentRoute =="/admin/dashboard" && "active" %>  rounded">
+                                <i class="fa-solid fa-align-center mr-2"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <hr>
+                        <li class="menu-item">
+                                <a class="" data-toggle="collapse" href="#ad" role="button" aria-expanded="true" aria-controls="collapseExample">
+                                    <i class="fa-solid fa-user-shield mr-2"></i>  Admin
+                                </a>
+                              <ul class="collapse ml-2" id="ad">
+                                <li class="menu-item d-flex">
+                                    <a href="/admin/add-admin" class="<%= currentRoute =="/admin/add-admin" && 'active' %>  rounded">
+                                        <i class="fa-solid fa-circle-plus mr-2"></i>
+                                        Add Admin
+                                    </a>
+                                </li>
+                                <li class="menu-item d-flex">
+                                    <a href="/admin/admin-lists" class="<%= currentRoute =="/admin/admin-lists" && 'active' %>  rounded"><i class="fa-solid fa-list mr-2"></i>Admin Lists</a>
+                                </li>
+                              </ul>
+                        </li>
+                        <hr>
+                        <li class="menu-item">
+                            <a class="" data-toggle="collapse" href="#us" role="button" aria-expanded="true" aria-controls="collapseExample">
+                                <i class="fa-solid fa-user mr-3"></i> User
+                            </a>
+                          <ul class="collapse ml-2" id="us">
+                            <li class="menu-item d-flex">
+                                <a href="/admin/add-admin" class="<%= currentRoute =="/admin/add-admin" && 'active' %>  rounded">
+                                    <i class="fa-solid fa-circle-plus mr-2"></i>
+                                    Add User
+                                </a>
+                            </li>
+                            <li class="menu-item d-flex">
+                                <a href="/admin/user-lists" class="<%= currentRoute =="/admin/user-lists" && 'active' %>  rounded"><i class="fa-solid fa-list mr-2"></i>User Lists</a>
+                            </li>
+                          </ul>
+                        </li>
+                    <hr>
+                        <li class="menu-item">
+                            <a class="" data-toggle="collapse" href="#pd" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                <i class="fa-solid fa-book-medical mr-2"></i> Products
+                            </a>
+                          <ul class="collapse ml-2" id="pd">
+                            <li class="menu-item d-flex">
+                                <a href="/admin/add-category" class="<%= currentRoute =="/admin/add-category" && 'active' %>  rounded">
+                                    <i class="fa-solid fa-arrows-to-dot mr-2"></i>
+                                    Add Category
+                                </a>
+                            </li>
+                            <li class="menu-item d-flex  ">
+                                <a href="/admin/add-product" class="<%= currentRoute =="/admin/add-product" && 'active' %>  rounded">
+                                    <i class="fa-solid fa-circle-plus mr-2"></i>
+                                    Add Product
+                                </a>
+                            </li>
+                          
+                            <li class="menu-item d-flex">
+                                <a href="/admin/product-lists" class="<%= currentRoute =="/admin/product-lists" && 'active' %>  rounded">
+                                    <i class="fa-solid fa-list mr-2"></i>
+                                    Product Lists
+                                </a>
+                            </li>
+                            
+                          </ul>
+                        </li>
+                    <hr>
+                        
+                    </ul>
+                </div>
+            </div>
+            <!-- end sidebar  -->
+            <!-- start content -->
+            <div class="col-lg-9 col-xl-10 content" style="">
+                <div class="row header mb-2">
+                    <div class="col-12">
+                        <div class="d-flex bg-primary p-2 align-items-center justify-content-between">
+                            <button class="btn btn-primary d-lg-none d-block show-sidebar">
+                                <i class="fa-solid fa-bars"></i>
+                            </button>
+                            <form action="" class="d-lg-block d-none">
+                                <div class="form-inline">
+                                    <input type="text" class="form-control mr-2">
+                                    <button class="btn btn-light">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                    </button>
+                                </div>
+                            </form>
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="/<%= admin.image %> " alt="AKK" class="user_image">  <%= admin.name %> 
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton ">
+                                  <a href="/admin/profile" class="dropdown-item d-flex justify-content-between align-items-center" style="cursor: pointer;">
+                                    Profile
+                                    <i class="fa-solid fa-angle-right"></i>
+                                  </a>
+                                  
+                                  <div class="dropdown-divider"></div>
+                                  <div class="dropdown-item d-flex justify-content-between align-items-center" style="cursor: pointer;">
+                                    <form action="/admin/logout" method="post">
+                                        <input type="submit" class="btn dropdown-item p-0" value="Logout">
+                                    </form>
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                  </div>
+                                 
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <% if(breadcrumb.length > 0){ %>
+                    <div class="row ">
+                        <div class="col-12">
+                            <nav aria-label="breadcrumb" class="bg-white mb-4">
+                                <ol class="breadcrumb" >
+                                    <% for(b of breadcrumb){ %>
+                                        <li class="breadcrumb-item"><a href="/admin<%= b.url %>"><%= b.name %> </a></li>
+                                    <% } %>  
+                                </ol>
+                                </nav>
+                        </div>
+                    </div>
+                <% } %> 
+                
+           
+    
