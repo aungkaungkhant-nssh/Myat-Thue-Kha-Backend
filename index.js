@@ -8,13 +8,15 @@ const uuidv4 = require('uuid');
 const compression = require('compression');
 const cors = require("cors");
 require('dotenv').config();
-const corsOptions ={
-    origin:'http://localhost:3000', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-}
-app.use(cors(corsOptions));
 
+app.use(cors());
+
+app.get("/", (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*")
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Allow-Headers", "content-type");
+    res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" ); 
+     });
 const fileStorage = multer.diskStorage({
     destination:(req,file,cb)=>{
         cb(null,"images");
