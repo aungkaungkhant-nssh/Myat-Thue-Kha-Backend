@@ -6,15 +6,10 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const uuidv4 = require('uuid');
 const compression = require('compression');
+const cors = require("cors");
 require('dotenv').config();
+app.use(cors());
 
-app.use((req,res,next)=>{
-    
-    res.setHeader("Access-Control-Allow-Origin","*");
-    res.setHeader("Access-Control-Allow-Methods","GET,POST,DELETE,PUT");
-    res.setHeader("Access-Control-Allow-Headers","Content-Type,Authorization");
-    next();
-})
 
 const fileStorage = multer.diskStorage({
     destination:(req,file,cb)=>{
