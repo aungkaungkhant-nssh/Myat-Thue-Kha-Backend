@@ -21,7 +21,6 @@ exports.getLowerNumberInstock = async(req,res,next)=>{
     }
 }
 exports.postAddProduct = async(req,res,next)=>{
-    console.log(req);
     const {name,price,description,category_id,numberInstock}= req.body;
     const errors = validationResult(req);
     if(!errors.isEmpty()) return res.status(422).send({message:"Invalid",vErrors:errors});

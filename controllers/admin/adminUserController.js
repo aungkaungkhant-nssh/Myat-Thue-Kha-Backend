@@ -16,7 +16,7 @@ exports.postAddUser = async(req,res,next)=>{
     const {name,email,phone,password} = req.body;
     const errors = validationResult(req);
     if(!errors.isEmpty()) return res.status(422).send({message:"Invalid",vErrors:errors});
-    const image =req.files.userimage ? req.files.userimage[0] : "";
+    const image =req.files.image ? req.files.image[0] : "";
     try{
         const hashedpassword = await bcrypt.hash(password,12);
         let user = new User({name,email,phone,password:hashedpassword,image:image.path});

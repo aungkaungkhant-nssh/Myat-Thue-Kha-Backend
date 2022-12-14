@@ -29,7 +29,7 @@ const fileStorage = multer.diskStorage({
 app.use(express.json());
 app.use(compression())
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(multer({storage:fileStorage}).fields([{name:'image',maxCount:1},{name:"userimage",maxCount:1}]));
+app.use(multer({storage:fileStorage}).fields([{name:'image',maxCount:1}]));
 app.use(express.static(path.join(__dirname,"public")));
 app.use("/images",express.static(path.join(__dirname,"images")));
 

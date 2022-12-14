@@ -28,7 +28,7 @@ exports.postRegister =  async(req,res,next)=>{
            
         if(existPhone)return res.status(400).json({message:"Your Phone is aleady exist"})
         
-        const image = req.files.userimage[0];
+        const image = req.files.image[0];
         let hashedPassword = await bcrypt.hash(password,12);
         let user = new User({name,email,phone,password:hashedPassword,image:image.path});
         user = await user.save();
