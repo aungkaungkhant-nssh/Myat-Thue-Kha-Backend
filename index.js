@@ -11,12 +11,7 @@ require('dotenv').config();
 
 app.use(cors());
 
-app.get("/", (req, res) => {
-    res.setHeader("Access-Control-Allow-Origin", "*")
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Allow-Headers", "content-type");
-    res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" ); 
-     });
+
 const fileStorage = multer.diskStorage({
     destination:(req,file,cb)=>{
         cb(null,"images");
